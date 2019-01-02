@@ -6,13 +6,15 @@ interface Circle {
   radius: number;
   position: number[];
   color: string;
+  rotation: number[];
 }
 
 export class GridDrawer {
   palette = random.pick(palettes);
 
   constructor(private context: CanvasRenderingContext2D) {
-    random.setSeed(500); // setting seed allows you to "control"/lock randomisation
+    random.setSeed(random.getRandomSeed()); // setting seed allows you to "control"/lock randomisation
+    console.log("Seed: " + random.getSeed());
   }
 
   drawGrid(width: number, height: number) {
@@ -20,17 +22,25 @@ export class GridDrawer {
     const margin = 70;
 
     points.forEach(data => {
-      const { position, radius, color } = data;
+      const { position, radius, color, rotation } = data;
       const [u, v] = position;
 
       // lerp - linear interpolation - used for creating margin
       const x = lerp(margin, width - margin, u);
       const y = lerp(margin, height - margin, v);
 
-      this.context.beginPath();
-      this.context.arc(x, y, radius * width, 0, Math.PI * 2);
+      //   this.context.beginPath();
+      //   this.context.arc(x, y, radius * width, 0, Math.PI * 2);
+      //   this.context.fillStyle = color;
+      //   this.context.fill();
+
+      this.context.save();
       this.context.fillStyle = color;
-      this.context.fill();
+      this.context.font = `${radius * width}px "Arial"`;
+      this.context.translate(x, y);
+      this.context.rotate(rotation[0]);
+      this.context.fillText("=", 0, 0);
+      this.context.restore();
     });
   }
 
@@ -43,9 +53,10 @@ export class GridDrawer {
         const v = count <= 1 ? 0.5 : y / (count - 1);
 
         points.push({
-          radius: Math.abs(random.gaussian() * 0.02),
+          radius: Math.abs(random.noise2D(u, v)) * 0.2,
           position: [u, v],
-          color: random.pick(this.palette)
+          color: random.pick(this.palette),
+          rotation: random.noise2D(u, v)
         });
       }
     }
