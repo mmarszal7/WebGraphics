@@ -15,6 +15,7 @@ export class CubeDrawer {
 
   initScene() {
     this.renderer = new THREE.WebGLRenderer({ context: this.context });
+    this.renderer.setSize(this.width, this.height);
 
     // Background color and alpha
     this.renderer.setClearColor("lightgreen", 1);
@@ -48,7 +49,6 @@ export class CubeDrawer {
 
   animate() {
     requestAnimationFrame(() => this.animate());
-    this.mesh.rotation.x += 0.005;
     this.mesh.rotation.y += 0.01;
     this.renderer.render(this.scene, this.camera);
   }

@@ -13,11 +13,11 @@ canvas.height = 512;
 // simpleDrawer.drawRectangle(100, 100);
 // simpleDrawer.drawCircle(200, 200, 50);
 
-// const gridDrawer = new GridDrawer(context, 512, 512);
+// const gridDrawer = new GridDrawer(context, canvas.width, canvas.height);
 // gridDrawer.drawCircles();
 // gridDrawer.drawText();
 
 // 3D
 const context = <WebGLRenderingContext>canvas.getContext("webgl", { antialias: true });
-const cubeDrawer = new CubeDrawer(context, 512, 512);
-const cube = cubeDrawer.drawCube();
+const cubeDrawer = new CubeDrawer(context, canvas.width, canvas.height);
+cubeDrawer.drawCube();
