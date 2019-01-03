@@ -21,9 +21,3 @@ canvas.height = 512;
 const context = <WebGLRenderingContext>canvas.getContext("webgl", { antialias: true });
 const cubeDrawer = new CubeDrawer(context, 512, 512);
 const cube = cubeDrawer.drawCube();
-
-let i = 0;
-setInterval(() => {
-  i++;
-  cube.render({ time: i / 60 });
-}, 16);
