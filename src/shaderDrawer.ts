@@ -1,5 +1,4 @@
 import * as THREE from "three";
-const glsl = require("glslify");
 
 export class ShaderDrawer {
   camera: THREE.Camera;
@@ -50,23 +49,8 @@ export class ShaderDrawer {
   }
 
   getShader(): THREE.ShaderMaterial {
-    const frag = glsl(`
-    uniform float time;
-      uniform vec2 resolution;
-      void main()	{
-          float x = mod(time + gl_FragCoord.x, 20.) < 10. ? 1. : 0.;
-          float y = mod(time + gl_FragCoord.y, 20.) < 10. ? 1. : 0.;
-          gl_FragColor = vec4(vec3(min(x, y)), 1.);
-      }
-      `);
-
-    const vertex = glsl(`
-    uniform float time;
-    uniform vec2 resolution;
-    void main()	{
-        gl_Position = vec4( position, 1.0 );
-    }
-    `);
+    const frag = require("./shaders/frag.glsl");
+    const vertex = require("./shaders/vert.glsl");
 
     return new THREE.ShaderMaterial({
       uniforms: this.uniforms,
