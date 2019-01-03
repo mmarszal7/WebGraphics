@@ -1,6 +1,7 @@
 import { SimpleDrawer } from "./simpleDrawer";
 import { GridDrawer } from "./gridDrawer";
 import { CubeDrawer } from "./cubeDrawer";
+import { ShaderDrawer } from "./shaderDrawer";
 
 const canvas = <HTMLCanvasElement>document.getElementById("myCanvas");
 canvas.width = 512;
@@ -18,6 +19,11 @@ canvas.height = 512;
 // gridDrawer.drawText();
 
 // 3D
+// const context = <WebGLRenderingContext>canvas.getContext("webgl", { antialias: true });
+// const cubeDrawer = new CubeDrawer(context, canvas.width, canvas.height);
+// cubeDrawer.drawCube();
+
+// Shaders
 const context = <WebGLRenderingContext>canvas.getContext("webgl", { antialias: true });
-const cubeDrawer = new CubeDrawer(context, canvas.width, canvas.height);
-cubeDrawer.drawCube();
+const shaderDrawer = new ShaderDrawer(context, canvas.width, canvas.height);
+shaderDrawer.drawShader();
