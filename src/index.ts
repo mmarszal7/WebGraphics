@@ -11,5 +11,6 @@ const simpleDrawer = new SimpleDrawer(context);
 // simpleDrawer.drawRectangle(100, 100);
 // simpleDrawer.drawCircle(200, 200, 50);
 
-const gridDrawer = new GridDrawer(context);
-gridDrawer.drawGrid(512, 512);
+const gridDrawer = new GridDrawer(context, 512, 512);
+// gridDrawer.drawCircles();
+gridDrawer.drawText();
