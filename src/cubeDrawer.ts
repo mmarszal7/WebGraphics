@@ -59,6 +59,7 @@ export class CubeDrawer {
 
   animate() {
     requestAnimationFrame(() => this.animate());
+    this.scene.rotation.y += 0.01;
     this.renderer.render(this.scene, this.camera);
   }
 }
