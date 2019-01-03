@@ -1,4 +1,6 @@
 import * as THREE from "three";
+const random = require("canvas-sketch-util/random");
+const palettes = require("nice-color-palettes/1000.json");
 
 export class CubeDrawer {
   camera: THREE.PerspectiveCamera;
@@ -22,20 +24,28 @@ export class CubeDrawer {
 
     // Camera setup
     this.camera = new THREE.PerspectiveCamera(45, 1, 0.01, 1000);
-    this.camera.position.set(4, 2, 2);
+    this.camera.position.set(20, 10, 10);
     this.camera.lookAt(new THREE.Vector3());
 
     // Scene
     this.scene = new THREE.Scene();
 
     // Geometry
-    this.mesh = new THREE.Mesh(
-      new THREE.BoxGeometry(1, 1, 1),
-      new THREE.MeshBasicMaterial({
-        color: "red"
-      })
-    );
-    this.scene.add(this.mesh);
+    const geometry = new THREE.BoxGeometry(1, 1, 1);
+    const palette = random.pick(palettes);
+    for (let i = 0; i < 20; i++) {
+      this.mesh = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ color: random.pick(palette) }));
+      this.mesh.position.set(random.range(-5, 5), random.range(-5, 5), random.range(-5, 5));
+      this.mesh.scale.set(random.range(1, 3), random.range(1, 3), random.range(1, 3));
+      this.mesh.scale.multiplyScalar(0.8);
+      this.scene.add(this.mesh);
+    }
+
+    // Light
+    const light = new THREE.DirectionalLight("white", 1);
+    light.position.set(20, 10, 0);
+    this.scene.add(light);
+    this.scene.add(new THREE.AmbientLight("lightblue")); // AmbientLight - color of not lightened places
 
     // Resize
     window.addEventListener("resize", this.onWindowResize, false);
@@ -49,7 +59,6 @@ export class CubeDrawer {
 
   animate() {
     requestAnimationFrame(() => this.animate());
-    this.mesh.rotation.y += 0.01;
     this.renderer.render(this.scene, this.camera);
   }
 }
