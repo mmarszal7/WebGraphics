@@ -33,8 +33,14 @@ export class CubeDrawer {
     // Geometry
     const geometry = new THREE.BoxGeometry(1, 1, 1);
     const palette = random.pick(palettes);
+    const material = new THREE.ShaderMaterial({
+      vertexShader: require("./shaders/vert.glsl"),
+      fragmentShader: require("./shaders/frag.glsl")
+    });
+
     for (let i = 0; i < 20; i++) {
-      this.mesh = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial({ color: random.pick(palette) }));
+      //   const material = new THREE.MeshStandardMaterial({ color: random.pick(palette) });
+      this.mesh = new THREE.Mesh(geometry, material);
       this.mesh.position.set(random.range(-5, 5), random.range(-5, 5), random.range(-5, 5));
       this.mesh.scale.set(random.range(1, 3), random.range(1, 3), random.range(1, 3));
       this.mesh.scale.multiplyScalar(0.8);

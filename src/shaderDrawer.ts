@@ -28,6 +28,7 @@ export class ShaderDrawer {
     const geometry = new THREE.PlaneGeometry(2, 2);
     const material = new THREE.ShaderMaterial({
       uniforms: this.uniforms,
+      vertexShader: require("./shaders/vert.glsl"),
       fragmentShader: require("./shaders/frag.glsl")
     });
 

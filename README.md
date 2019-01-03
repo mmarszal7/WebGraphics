@@ -21,9 +21,18 @@ three.js - framework working on top of WebGL:
 - MeshNormalMaterial - for debugging - showing surfaces on 3d
 - MeshStandardMaterial - with light, shoadow etc.
 
+Shaders:
+
+- glsl - OpenGL shading language
 - Shader - small program (in this context it is written in glsl) that is ment to do a single task - function that runs on every single pixel (without knowledge of any other pixels)
+- https://github.com/Jam3/jam3-lesson-webgl-shader-intro
 
 To do:
 
-- researsh definitions!
+- research definitions for shaders and WebGl/Three.js
+- deeper understanding of:
+  - three.js/webgl
+  - 3d modeling
+  - shaders
 - check out code from workshop
+- load and play with some custom 3d models
