@@ -26,36 +26,20 @@ export class ShaderDrawer {
 
     // Geometry
     const geometry = new THREE.PlaneGeometry(2, 2);
-    const material = this.getShader();
+    const material = new THREE.ShaderMaterial({
+      uniforms: this.uniforms,
+      fragmentShader: require("./shaders/frag.glsl")
+    });
+
     this.mesh = new THREE.Mesh(geometry, material);
     this.scene.add(this.mesh);
-
-    this.uniforms.resolution.value.x = window.innerWidth;
-    this.uniforms.resolution.value.y = window.innerHeight;
 
     this.animate();
   }
 
   animate() {
     requestAnimationFrame(() => this.animate());
-    this.render();
-  }
-
-  render() {
-    var elapsedMilliseconds = Date.now() - this.startTime;
-    var elapsedSeconds = elapsedMilliseconds / 1000;
-    this.uniforms.time.value = 60 * elapsedSeconds;
+    // this.uniforms.time.value = (60 * (Date.now() - this.startTime)) / 1000;
     this.renderer.render(this.scene, this.camera);
-  }
-
-  getShader(): THREE.ShaderMaterial {
-    const frag = require("./shaders/frag.glsl");
-    const vertex = require("./shaders/vert.glsl");
-
-    return new THREE.ShaderMaterial({
-      uniforms: this.uniforms,
-      vertexShader: vertex,
-      fragmentShader: frag
-    });
   }
 }
