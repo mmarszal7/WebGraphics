@@ -1,5 +1,6 @@
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.ts",
@@ -14,9 +15,8 @@ module.exports = {
     path: __dirname + "/dist"
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: "index.html"
-    })
+    new HtmlWebpackPlugin({ template: "index.html" }),
+    new CopyWebpackPlugin([{ from: "./src/models", to: "models" }])
   ],
   resolve: {
     extensions: [".ts", ".js"]

@@ -2,6 +2,8 @@ import { SimpleDrawer } from "./simpleDrawer";
 import { GridDrawer } from "./gridDrawer";
 import { CubeDrawer } from "./cubeDrawer";
 import { ShaderDrawer } from "./shaderDrawer";
+import { explosionExample } from "./explosion";
+import { drawCar } from "./car";
 
 const canvas = <HTMLCanvasElement>document.getElementById("myCanvas");
 canvas.width = 512;
@@ -24,6 +26,9 @@ canvas.height = 512;
 // cubeDrawer.drawCube();
 
 // Shaders
+// const context = <WebGLRenderingContext>canvas.getContext("webgl", { antialias: true });
+// const shaderDrawer = new ShaderDrawer(context, canvas.width, canvas.height);
+// shaderDrawer.drawShader();
+
 const context = <WebGLRenderingContext>canvas.getContext("webgl", { antialias: true });
-const shaderDrawer = new ShaderDrawer(context, canvas.width, canvas.height);
-shaderDrawer.drawShader();
+drawCar(context, canvas.width, canvas.height);
