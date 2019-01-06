@@ -8,20 +8,24 @@ import {
   DirectionalLight,
   AmbientLight
 } from "three";
+import { getContext } from "../context";
+
+const context = <WebGLRenderingContext>getContext("webgl");
+const width = context.canvas.width;
+const height = context.canvas.height;
+const uniforms = { time: { type: "f", value: 0 } };
+
 let renderer: WebGLRenderer;
 let camera: PerspectiveCamera;
 let scene: Scene;
 let mesh: Mesh;
-const uniforms = {
-  time: { type: "f", value: 0 }
-};
 
 // Boilerplate for using OBJLoader which is not a part of THREE
 const THREE = require("three");
 const OBJLoader = require("three-obj-loader");
 OBJLoader(THREE);
 
-export function drawCar(context: WebGLRenderingContext, width: number, height: number) {
+export function drawCar() {
   renderer = new WebGLRenderer({ context: context });
   renderer.setSize(width, height);
 

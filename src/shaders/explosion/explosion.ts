@@ -1,23 +1,17 @@
-import {
-  WebGLRenderer,
-  PerspectiveCamera,
-  SphereGeometry,
-  ShaderMaterial,
-  Vector3,
-  Scene,
-  Mesh,
-  BoxGeometry
-} from "three";
+import { WebGLRenderer, PerspectiveCamera, ShaderMaterial, Vector3, Scene, Mesh, BoxGeometry } from "three";
+import { getContext } from "../../context";
 
+const context = <WebGLRenderingContext>getContext("webgl");
+const width = context.canvas.width;
+const height = context.canvas.height;
+
+const uniforms = { time: { type: "f", value: 1.0 } };
 let renderer: WebGLRenderer;
 let camera: PerspectiveCamera;
 let scene: Scene;
 let mesh: Mesh;
-const uniforms = {
-  time: { type: "f", value: 0 }
-};
 
-export function explosionExample(context: WebGLRenderingContext, width: number, height: number) {
+export function drawExplosion() {
   renderer = new WebGLRenderer({ context: context });
   renderer.setSize(width, height);
 
@@ -33,8 +27,8 @@ export function explosionExample(context: WebGLRenderingContext, width: number, 
   const geometry = new BoxGeometry(5, 5, 5);
   //   geometry.computeVertexNormals();
   const material = new ShaderMaterial({
-    vertexShader: require("./shaders/explosion/explosion.vert.glsl"),
-    fragmentShader: require("./shaders/explosion/explosion.frag.glsl"),
+    vertexShader: require("./shaders/explosion.vert.glsl"),
+    fragmentShader: require("./shaders/explosion.frag.glsl"),
     uniforms: uniforms
   });
 

@@ -16,7 +16,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({ template: "index.html" }),
-    new CopyWebpackPlugin([{ from: "./src/models", to: "models" }])
+    new CopyWebpackPlugin([{ from: "./src/3d/models", to: "models" }])
   ],
   resolve: {
     extensions: [".ts", ".js"]
