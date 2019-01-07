@@ -5,6 +5,8 @@ import { drawCar } from "./3d/car";
 import { drawGradient } from "./shaders/gradient/gradient";
 import { drawIllusion } from "./shaders/illusion/illusion";
 import { drawExplosion } from "./shaders/explosion/explosion";
+import { drawArc } from "./shaders/arcIndicator/arc";
+import { drawBar } from "./shaders/barIndicator/bar";
 
 // 2D
 // drawRectangle();
@@ -13,10 +15,12 @@ import { drawExplosion } from "./shaders/explosion/explosion";
 // drawText();
 
 // 3D
-drawCube();
+// drawCube();
 // drawCar();
 
 // Shaders
 // drawGradient();
 // drawIllusion();
 // drawExplosion();
+// drawBar();
+drawArc();
