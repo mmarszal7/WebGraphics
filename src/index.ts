@@ -19,4 +19,5 @@ import { drawIndicator } from "./shaders/indicators/indicators";
 // drawExplosion();
 // drawIndicator("arc");
 // drawGrid();
-drawMouseInteraction("noise");
+// drawMouseInteraction("noise");
+drawMovement();
