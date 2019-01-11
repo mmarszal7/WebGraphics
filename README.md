@@ -83,3 +83,4 @@ Three.js is a 3d modeling library working on top of WebGL. Some basic concepts c
 
 - research definitions for shaders and WebGl/Three.js
 - check out code from workshop
+- svg
