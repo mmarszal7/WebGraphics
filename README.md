@@ -9,17 +9,65 @@
 - [GLSL Cheet sheet](https://www.khronos.org/files/opengl-quick-reference-card.pdf)
 - [MDN - 3d graphics theory](https://developer.mozilla.org/en-US/docs/Games/Techniques/3D_on_the_web/Basic_theory)
 
-Some samples in this repo are base on Matt DesLauriers's [canvas-sketch](https://github.com/mattdesl/canvas-sketch) project and [generative art workshop](https://github.com/mattdesl/workshop-generative-art)
-
 ## Scope of this project:
 
 - Canvas API
+- SVG & GSAP
 - three.js
 - Shaders
 
 ---
 
 ## Canvas:
+
+---
+
+## SVG & GSAP:
+
+**VievBox** - svg coordinate system is infinite, so ViewBox let you set up windows which you use to look at your picture - usefull i.a. in animations where you can move things from/to your ViewBox
+
+**Platonic shapes:**
+
+- Line - `<line fill="none" stroke="black" x1="50" y1="6" x2="80" y2="95"/>`
+- Rectangle - `<rect x="10" y="5" fill="white" stroke="black" width="90" height="90"/>`
+- Circle - `<circle fill="white" stroke="black" cx="50" cy="50" r="45"/>`
+- Polygon - `<polygon fill="white" stroke="black" points="arrayOfCoordinates"/>`
+
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+  x="0px" y="0px" width="450px" height="100px" viewBox="0 0 450 100">
+
+  <rect x="10" y="5" fill="white" stroke="black" width="90" height="90"/>
+
+  <circle fill="white" stroke="black" cx="170" cy="50" r="45"/>
+
+  <polygon fill="white" stroke="black" points="279,5 294,35 328,40 303,62 309,94 
+  279,79 248,94 254,62 230,39 263,35 "/>
+
+  <line fill="none" stroke="black" x1="410" y1="95" x2="440" y2="6"/>
+
+  <line fill="none" stroke="black" x1="360" y1="6" x2="360" y2="95"/>
+
+  </svg>
+
+**Other tags:**
+
+- Group - `<g></g>` - svg grouping tag
+- Polyline - `<polyline points="14,17 86,17 77,37 30,37 52,68 82,48 "/>`
+- Paths - `<path d="M7.3 75L25.9 6.8s58.4-6.4 33.5 13-41.1 32.8-11.2 30.8h15.9v5.5s42.6 18.8 0 20.6" />`
+
+  <svg width="400px" viewBox="0 0 218.8 87.1" >
+  <svg>
+    <g fill="none" stroke="#000">
+    <polyline points="14,17 86,17 77,37 30,37 52,68 82,48 "/>
+    <path d="M133.1 58.2s12.7-69.2 24.4-47.5c0 0 4.1 8.6 9.5.9 0 0 5-10 10.4.9 0 0 12.2 32.6 13.6 43 0 0 39.8 5.4 15.8 15.4-13.2 5.5-53.8 13.1-77.4 5.9.1 0-51.9-15.4 3.7-18.6z" />
+    </g>
+  </svg>
+
+<p align="center" display="inline"> 
+<img width="500px" src="./docs/svgPath.png"/>
+</p>
+
+---
 
 ## Three.js:
 
@@ -37,6 +85,8 @@ Three.js is a 3d modeling library working on top of WebGL. Some basic concepts c
     - MeshBasicMaterial
     - MeshNormalMaterial - for debugging - showing surfaces on 3d
     - MeshStandardMaterial - with light, shoadow etc.
+
+---
 
 ## Shaders:
 
@@ -83,4 +133,24 @@ Three.js is a 3d modeling library working on top of WebGL. Some basic concepts c
 
 - research definitions for shaders and WebGl/Three.js
 - check out code from workshop
-- svg
+
+- [Good Projects for Beginners:](https://erkaman.github.io/posts/beginner_computer_graphics.html?utm_source=programmingdigest&utm_medium=web&utm_campaign=featured)
+
+  - Make a **raytracer** - a program that renders 3D scenes by sending out rays from every pixel in the screen
+  - Make a **software rasterizer** - a program that renders 3D scenes
+
+- Other
+  - Make a sphere mesh using spherical coordinates, and render it.
+  - Implement shader for simple diffuse and specular shading.
+  - Directional Lights, point lights, and spot lights
+  - Heightmap Rendering
+  - Write a simple parser for a simple mesh format such as Wavefront .obj, import it into your program and render it. In particular, try and import and render meshes with textures.
+  - Implement a simple minecraft renderer. It is surprisingly simple to render minecraft-like worlds, and it is also very learningful.
+  - Render reflections using cubemaps
+  - Shadow rendering using shadow maps.
+  - Implement view frustum culling. This is a simple, yet very practical optimization technique.
+  - Implement rendering of particle systems
+  - Learn how to implement Gamma Correction.
+  - Implement normal mapping
+  - Learn how to render lots of meshes efficiently with instanced rendering
+  - Animate meshes with mesh skinning.
