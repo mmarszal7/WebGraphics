@@ -7,6 +7,9 @@ import { drawMouseInteraction } from "./shaders/mouseInteraction/mouseInteractio
 import { drawIndicator } from "./shaders/indicators/indicators";
 import { drawCircles } from "./canvas/grid";
 import { drawMap } from "./canvas/clickableMap";
+import { drawRectangle } from "./canvas/figures";
+import { drawCube } from "./3d/cube";
+import { drawCheckboxMatrix } from "./3d/checkboxMatrix";
 
 // drawRectangle();
 // drawCircle();
@@ -16,6 +19,7 @@ drawMap();
 
 // drawCube();
 // drawCar();
+// drawCheckboxMatrix();
 
 // drawGradient();
 // drawIllusion();
