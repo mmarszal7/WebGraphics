@@ -10,12 +10,13 @@ import { drawMap } from "./canvas/clickableMap";
 import { drawRectangle } from "./canvas/figures";
 import { drawCube } from "./3d/cube";
 import { drawCheckboxMatrix } from "./3d/checkboxMatrix";
+import { drawFalppyBirdMap } from "./canvas/flappyBirdMap";
 
 // drawRectangle();
 // drawCircle();
 // drawCircles();
 // drawText();
-drawMap();
+// drawMap();
 
 // drawCube();
 // drawCar();
@@ -28,3 +29,4 @@ drawMap();
 // drawGrid();
 // drawMouseInteraction("noise");
 // drawMovement();
+drawFalppyBirdMap();
